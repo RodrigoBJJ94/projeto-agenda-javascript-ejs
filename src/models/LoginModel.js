@@ -28,6 +28,7 @@ class Login {
             return;
         }
     }
+
     async register() {
         this.valida();
         if (this.errors.length > 0) return;
@@ -36,6 +37,7 @@ class Login {
         this.body.password = bcryptjs.hashSync(this.body.password, salt);
         this.user = await LoginModel.create(this.body);
     }
+
     async userExists() {
         this.user = await LoginModel.findOne({ email: this.body.email });
         if (this.user) this.errors.push('Usuário já existe!');
@@ -48,6 +50,7 @@ class Login {
             this.errors.push('A senha precisa ter de 6 a 50 caracteres!')
         }
     }
+
     cleanUp() {
         for (const key in this.body) {
             if (typeof this.body[key] !== 'string') {
@@ -60,4 +63,5 @@ class Login {
         };
     }
 }
+
 module.exports = Login;
