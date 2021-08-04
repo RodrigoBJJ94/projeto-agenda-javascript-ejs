@@ -8,6 +8,7 @@ const ContatoSchema = new mongoose.Schema({
     telefone: { type: String, required: false, default: '' },
     criadoEm: { type: Date, default: Date.now }
 });
+
 const ContatoModel = mongoose.model('Contato', ContatoSchema);
 
 function Contato(body) {
